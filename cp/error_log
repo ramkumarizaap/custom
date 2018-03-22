@@ -1,0 +1,82 @@
+[04-Jan-2018 13:00:21 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Site::get_custom_color_lining() in /home/joewong8/public_html/cp/property/custom_color.php:44
+Stack trace:
+#0 /home/joewong8/public_html/cp/content.php(440): require_once()
+#1 /home/joewong8/public_html/cp/index.php(61): require_once('/home/joewong8/...')
+#2 {main}
+  thrown in /home/joewong8/public_html/cp/property/custom_color.php on line 44
+[04-Jan-2018 13:00:29 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Site::get_custom_color_lining() in /home/joewong8/public_html/cp/property/custom_color.php:44
+Stack trace:
+#0 /home/joewong8/public_html/cp/content.php(440): require_once()
+#1 /home/joewong8/public_html/cp/index.php(61): require_once('/home/joewong8/...')
+#2 {main}
+  thrown in /home/joewong8/public_html/cp/property/custom_color.php on line 44
+[04-Jan-2018 13:01:21 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Site::get_custom_color_lining(), 0 passed in /home/joewong8/public_html/cp/property/custom_color.php on line 44 and at least 1 expected in /home/joewong8/public_html/includes/action/functions.php:3887
+Stack trace:
+#0 /home/joewong8/public_html/cp/property/custom_color.php(44): Site->get_custom_color_lining()
+#1 /home/joewong8/public_html/cp/content.php(440): require_once('/home/joewong8/...')
+#2 /home/joewong8/public_html/cp/index.php(61): require_once('/home/joewong8/...')
+#3 {main}
+  thrown in /home/joewong8/public_html/includes/action/functions.php on line 3887
+[04-Jan-2018 13:01:33 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Site::get_custom_color_lining(), 0 passed in /home/joewong8/public_html/cp/property/custom_color.php on line 44 and at least 1 expected in /home/joewong8/public_html/includes/action/functions.php:3887
+Stack trace:
+#0 /home/joewong8/public_html/cp/property/custom_color.php(44): Site->get_custom_color_lining()
+#1 /home/joewong8/public_html/cp/content.php(440): require_once('/home/joewong8/...')
+#2 /home/joewong8/public_html/cp/index.php(61): require_once('/home/joewong8/...')
+#3 {main}
+  thrown in /home/joewong8/public_html/includes/action/functions.php on line 3887
+[04-Jan-2018 13:01:33 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Site::get_custom_color_lining(), 0 passed in /home/joewong8/public_html/cp/property/custom_color.php on line 44 and at least 1 expected in /home/joewong8/public_html/includes/action/functions.php:3887
+Stack trace:
+#0 /home/joewong8/public_html/cp/property/custom_color.php(44): Site->get_custom_color_lining()
+#1 /home/joewong8/public_html/cp/content.php(440): require_once('/home/joewong8/...')
+#2 /home/joewong8/public_html/cp/index.php(61): require_once('/home/joewong8/...')
+#3 {main}
+  thrown in /home/joewong8/public_html/includes/action/functions.php on line 3887
+[04-Jan-2018 13:01:40 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Site::get_custom_color_lining(), 0 passed in /home/joewong8/public_html/cp/property/custom_color.php on line 44 and at least 1 expected in /home/joewong8/public_html/includes/action/functions.php:3887
+Stack trace:
+#0 /home/joewong8/public_html/cp/property/custom_color.php(44): Site->get_custom_color_lining()
+#1 /home/joewong8/public_html/cp/content.php(440): require_once('/home/joewong8/...')
+#2 /home/joewong8/public_html/cp/index.php(61): require_once('/home/joewong8/...')
+#3 {main}
+  thrown in /home/joewong8/public_html/includes/action/functions.php on line 3887
+[04-Jan-2018 13:02:42 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Site::get_custom_color_lining(), 0 passed in /home/joewong8/public_html/cp/property/custom_color.php on line 44 and at least 1 expected in /home/joewong8/public_html/includes/action/functions.php:3887
+Stack trace:
+#0 /home/joewong8/public_html/cp/property/custom_color.php(44): Site->get_custom_color_lining()
+#1 /home/joewong8/public_html/cp/content.php(440): require_once('/home/joewong8/...')
+#2 /home/joewong8/public_html/cp/index.php(61): require_once('/home/joewong8/...')
+#3 {main}
+  thrown in /home/joewong8/public_html/includes/action/functions.php on line 3887
+[04-Jan-2018 13:02:50 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Site::get_custom_color_lining(), 0 passed in /home/joewong8/public_html/cp/property/custom_color.php on line 44 and at least 1 expected in /home/joewong8/public_html/includes/action/functions.php:3887
+Stack trace:
+#0 /home/joewong8/public_html/cp/property/custom_color.php(44): Site->get_custom_color_lining()
+#1 /home/joewong8/public_html/cp/content.php(440): require_once('/home/joewong8/...')
+#2 /home/joewong8/public_html/cp/index.php(61): require_once('/home/joewong8/...')
+#3 {main}
+  thrown in /home/joewong8/public_html/includes/action/functions.php on line 3887
+[04-Jan-2018 13:02:52 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Site::get_custom_color_lining(), 0 passed in /home/joewong8/public_html/cp/property/custom_color.php on line 44 and at least 1 expected in /home/joewong8/public_html/includes/action/functions.php:3887
+Stack trace:
+#0 /home/joewong8/public_html/cp/property/custom_color.php(44): Site->get_custom_color_lining()
+#1 /home/joewong8/public_html/cp/content.php(440): require_once('/home/joewong8/...')
+#2 /home/joewong8/public_html/cp/index.php(61): require_once('/home/joewong8/...')
+#3 {main}
+  thrown in /home/joewong8/public_html/includes/action/functions.php on line 3887
+[04-Jan-2018 13:03:18 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Site::get_custom_color_lining(), 0 passed in /home/joewong8/public_html/cp/property/custom_color.php on line 44 and at least 1 expected in /home/joewong8/public_html/includes/action/functions.php:3887
+Stack trace:
+#0 /home/joewong8/public_html/cp/property/custom_color.php(44): Site->get_custom_color_lining()
+#1 /home/joewong8/public_html/cp/content.php(440): require_once('/home/joewong8/...')
+#2 /home/joewong8/public_html/cp/index.php(61): require_once('/home/joewong8/...')
+#3 {main}
+  thrown in /home/joewong8/public_html/includes/action/functions.php on line 3887
+[04-Jan-2018 13:03:22 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Site::get_custom_color_lining(), 0 passed in /home/joewong8/public_html/cp/property/custom_color.php on line 44 and at least 1 expected in /home/joewong8/public_html/includes/action/functions.php:3887
+Stack trace:
+#0 /home/joewong8/public_html/cp/property/custom_color.php(44): Site->get_custom_color_lining()
+#1 /home/joewong8/public_html/cp/content.php(440): require_once('/home/joewong8/...')
+#2 /home/joewong8/public_html/cp/index.php(61): require_once('/home/joewong8/...')
+#3 {main}
+  thrown in /home/joewong8/public_html/includes/action/functions.php on line 3887
+[04-Jan-2018 13:03:43 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Site::get_custom_color_lining(), 0 passed in /home/joewong8/public_html/cp/property/custom_color.php on line 44 and at least 1 expected in /home/joewong8/public_html/includes/action/functions.php:3887
+Stack trace:
+#0 /home/joewong8/public_html/cp/property/custom_color.php(44): Site->get_custom_color_lining()
+#1 /home/joewong8/public_html/cp/content.php(440): require_once('/home/joewong8/...')
+#2 /home/joewong8/public_html/cp/index.php(61): require_once('/home/joewong8/...')
+#3 {main}
+  thrown in /home/joewong8/public_html/includes/action/functions.php on line 3887
