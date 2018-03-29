@@ -1939,7 +1939,7 @@ if(isset($_POST['orderid']))
                                         <div class="box_opt">
                                           <div class="radio_opt">
                                             <?php
-                                              if(isset($_SESSION['pant']['style']['pants_peg']) && !empty($_SESSION['pant']['style']['pants_peg']))
+                                              if(isset($_SESSION['pant']['style']['pants_peg']) && $_SESSION['pant']['style']['pants_peg']!="")
                                               {
                                                 $_SESSION['pant']['style']['pants_peg'] = $_SESSION['pant']['style']['pants_peg'];
                                               }
@@ -1978,7 +1978,7 @@ if(isset($_POST['orderid']))
                                           </p>
                                         </div>
                                         <?php
-                                          if(isset($_SESSION['pant']['style']['pants_belt']) && !empty($_SESSION['pant']['style']['pants_belt']))
+                                          if(isset($_SESSION['pant']['style']['pants_belt']) && $_SESSION['pant']['style']['pants_belt']!="")
                                           {
                                             $_SESSION['pant']['style']['pants_belt'] = $_SESSION['pant']['style']['pants_belt'];
                                           }
@@ -2077,7 +2077,7 @@ if(isset($_POST['orderid']))
                                         <div class="box_opt">
                                           <div id="box_back_pocket" class="radio_opt">
                                             <?php
-                                              if(isset($_SESSION['pant']['style']['pants_back_pocket']) && !empty($_SESSION['pant']['style']['pants_back_pocket']))
+                                              if(isset($_SESSION['pant']['style']['pants_back_pocket']) && $_SESSION['pant']['style']['pants_back_pocket']!="")
                                               {
                                                 $_SESSION['pant']['style']['pants_back_pocket'] = $_SESSION['pant']['style']['pants_back_pocket'];
                                               }
@@ -2182,7 +2182,7 @@ if(isset($_POST['orderid']))
                                         <div class="box_opt">
                                           <div class="radio_opt">
                                             <?php
-                                              if(isset($_SESSION['pant']['style']['pants_cuff']) && !empty($_SESSION['pant']['style']['pants_cuff']))
+                                              if(isset($_SESSION['pant']['style']['pants_cuff']) && $_SESSION['pant']['style']['pants_cuff']!="")
                                               {
                                                 $_SESSION['pant']['style']['pants_cuff'] = $_SESSION['pant']['style']['pants_cuff'];
                                               }
@@ -2609,7 +2609,7 @@ if(isset($_POST['orderid']))
                                         <div class="box_opt">
                                           <div id="options_jacket_style" class="radio_opt">
                                             <?php
-                                            $_SESSION['jacket']['style']['jacket_style']="";
+                                            //$_SESSION['jacket']['style']['jacket_style']="";
                                             if(isset($_SESSION['jacket']['style']['jacket_style']) && !empty($_SESSION['jacket']['style']['jacket_style']))
                                             {
                                               $_SESSION['jacket']['style']['jacket_style'] = $_SESSION['jacket']['style']['jacket_style'];
@@ -2648,7 +2648,7 @@ if(isset($_POST['orderid']))
                                         <div class="box_opt">
                                           <div class="radio_opt">
                                             <?php
-                                            if(isset($_SESSION['jacket']['style']['jacket_fit']) && !empty($_SESSION['jacket']['style']['jacket_fit']))
+                                            if(isset($_SESSION['jacket']['style']['jacket_fit']) && $_SESSION['jacket']['style']['jacket_fit']!="")
                                             {
                                               $_SESSION['jacket']['style']['jacket_fit'] = $_SESSION['jacket']['style']['jacket_fit'];
                                             }
@@ -2685,6 +2685,7 @@ if(isset($_POST['orderid']))
                                               <?php
                                               if(isset($_SESSION['jacket']['style']['jacket_lapel_type']) && !empty($_SESSION['jacket']['style']['jacket_lapel_type']))
                                               {
+
                                                 $_SESSION['jacket']['style']['jacket_lapel_type'] = $_SESSION['jacket']['style']['jacket_lapel_type'];
                                               }
                                               else
@@ -2762,7 +2763,7 @@ if(isset($_POST['orderid']))
                                         <div class="box_opt">
                                           <div class="radio_opt">
                                             <?php
-                                              if(isset($_SESSION['jacket']['style']['jacket_chest_pocket']) && !empty($_SESSION['jacket']['style']['jacket_chest_pocket']))
+                                              if(isset($_SESSION['jacket']['style']['jacket_chest_pocket']) && $_SESSION['jacket']['style']['jacket_chest_pocket']!="")
                                               {
                                                 $_SESSION['jacket']['style']['jacket_chest_pocket'] = $_SESSION['jacket']['style']['jacket_chest_pocket'];
                                               }
@@ -2796,7 +2797,7 @@ if(isset($_POST['orderid']))
                                         <div class="box_opt">
                                           <div class="radio_opt labels_jacket_pockets_num">
                                             <?php
-                                              if(isset($_SESSION['jacket']['style']['jacket_pockets']) && !empty($_SESSION['jacket']['style']['jacket_pockets']))
+                                              if(isset($_SESSION['jacket']['style']['jacket_pockets']) && $_SESSION['jacket']['style']['jacket_pockets']!="")
                                               {
                                                 $_SESSION['jacket']['style']['jacket_pockets'] = $_SESSION['jacket']['style']['jacket_pockets'];
                                               }
@@ -2910,7 +2911,7 @@ if(isset($_POST['orderid']))
                                         <div class="box_opt">
                                           <div class="radio_opt">
                                             <?php
-                                              if(isset($_SESSION['jacket']['style']['jacket_vent']) && !empty($_SESSION['jacket']['style']['jacket_vent']))
+                                              if(isset($_SESSION['jacket']['style']['jacket_vent']) && $_SESSION['jacket']['style']['jacket_vent']!='')
                                               {
                                                 $_SESSION['jacket']['style']['jacket_vent'] = $_SESSION['jacket']['style']['jacket_vent'];
                                               }
@@ -2950,7 +2951,7 @@ if(isset($_POST['orderid']))
                                         <div class="box_opt">
                                           <div class="radio_opt">
                                              <?php
-                                              if(isset($_SESSION['jacket']['style']['jacket_sleeve_buttons']) && !empty($_SESSION['jacket']['style']['jacket_sleeve_buttons']))
+                                              if(isset($_SESSION['jacket']['style']['jacket_sleeve_buttons']) && $_SESSION['jacket']['style']['jacket_sleeve_buttons']!='')
                                               {
                                                 $_SESSION['jacket']['style']['jacket_sleeve_buttons'] = $_SESSION['jacket']['style']['jacket_sleeve_buttons'];
                                               }
@@ -3822,7 +3823,7 @@ if(isset($_POST['orderid']))
                                           </p>
                                         </div>
                                         <?php
-                                          if(isset($_SESSION['shirt']['style']['shirt_chest_pocket']) && !empty($_SESSION['shirt']['style']['shirt_chest_pocket']))
+                                          if(isset($_SESSION['shirt']['style']['shirt_chest_pocket']) && $_SESSION['shirt']['style']['shirt_chest_pocket']!="")
                                           {
                                             $_SESSION['shirt']['style']['shirt_chest_pocket'] = $_SESSION['shirt']['style']['shirt_chest_pocket'];
                                           }
@@ -4438,7 +4439,7 @@ if(isset($_POST['orderid']))
                                     </div>
                                     <div class="box_opts" product_type="coat">
                                       <?php
-                                        $_SESSION['coat']['style']['coat_style']="";
+                                        //$_SESSION['coat']['style']['coat_style']="";
                                       if(isset($_SESSION['coat']['style']['coat_style']) && !empty($_SESSION['coat']['style']['coat_style']))
                                       {
                                         $_SESSION['coat']['style']['coat_style'] = $_SESSION['coat']['style']['coat_style'];
@@ -4478,10 +4479,11 @@ if(isset($_POST['orderid']))
                                       
                                       <!-- 2. Cuello -->
                                       <?php
-                                        $_SESSION['coat']['style']['coat_neck']="";
+                                        //$_SESSION['coat']['style']['coat_neck']="";
                                         if(isset($_SESSION['coat']['style']['coat_neck']) && !empty($_SESSION['coat']['style']['coat_neck']))
                                         {
                                           $_SESSION['coat']['style']['coat_neck'] = $_SESSION['coat']['style']['coat_neck'];
+
                                         }
                                         else
                                         {
@@ -4563,7 +4565,7 @@ if(isset($_POST['orderid']))
 
                                       <!-- 4. Longitud -->
                                       <?php
-                                        $_SESSION['coat']['style']['coat_length']="";
+                                        //$_SESSION['coat']['style']['coat_length']="";
                                         if(isset($_SESSION['coat']['style']['coat_length']) && !empty($_SESSION['coat']['style']['coat_length']))
                                         {
                                           $_SESSION['coat']['style']['coat_length'] = $_SESSION['coat']['style']['coat_length'];
@@ -4600,8 +4602,8 @@ if(isset($_POST['orderid']))
                                       
                                       <!-- 1. Entallado -->
                                       <?php
-                                        $_SESSION['coat']['style']['coat_fit']="";
-                                        if(isset($_SESSION['coat']['style']['coat_fit']) && !empty($_SESSION['coat']['style']['coat_fit']))
+                                        //$_SESSION['coat']['style']['coat_fit']="";
+                                        if(isset($_SESSION['coat']['style']['coat_fit']) && $_SESSION['coat']['style']['coat_fit']!="")
                                         {
                                           $_SESSION['coat']['style']['coat_fit'] = $_SESSION['coat']['style']['coat_fit'];
                                         }
@@ -4639,7 +4641,7 @@ if(isset($_POST['orderid']))
 
                                       <!-- 5. Cierre Frontal -->
                                       <?php
-                                        $_SESSION['coat']['style']['coat_closure']="";
+                                        //$_SESSION['coat']['style']['coat_closure']="";
                                         if(isset($_SESSION['coat']['style']['coat_closure']) && !empty($_SESSION['coat']['style']['coat_closure']))
                                         {
                                           $_SESSION['coat']['style']['coat_closure'] = $_SESSION['coat']['style']['coat_closure'];
@@ -4695,7 +4697,7 @@ if(isset($_POST['orderid']))
 
                                         <!-- ONLY IF: coat_closure = zipper/boton -->
                                         <?php
-                                        $_SESSION['coat']['style']['coat_closure_type_zipper']="";
+                                        //$_SESSION['coat']['style']['coat_closure_type_zipper']="";
                                         if(isset($_SESSION['coat']['style']['coat_closure_type_zipper']) && !empty($_SESSION['coat']['style']['coat_closure_type_zipper']))
                                         {
                                           $_SESSION['coat']['style']['coat_closure_type_zipper'] = $_SESSION['coat']['style']['coat_closure_type_zipper'];
@@ -4774,8 +4776,8 @@ if(isset($_POST['orderid']))
                                       
                                       <!-- 6. Bolsillos frontales -->
                                       <?php
-                                        $_SESSION['coat']['style']['coat_pockets']="";
-                                        if(isset($_SESSION['coat']['style']['coat_pockets']) && !empty($_SESSION['coat']['style']['coat_pockets']))
+                                        //$_SESSION['coat']['style']['coat_pockets']="";
+                                        if(isset($_SESSION['coat']['style']['coat_pockets']) && $_SESSION['coat']['style']['coat_pockets']!="")
                                         {
                                           $_SESSION['coat']['style']['coat_pockets'] = $_SESSION['coat']['style']['coat_pockets'];
                                         }
@@ -4820,7 +4822,7 @@ if(isset($_POST['orderid']))
                                             </label>
                                           </div>
                                           <?php
-                                            $_SESSION['coat']['style']['coat_pockets_type']="";
+                                            //$_SESSION['coat']['style']['coat_pockets_type']="";
                                             if(isset($_SESSION['coat']['style']['coat_pockets_type']) && !empty($_SESSION['coat']['style']['coat_pockets_type']))
                                             {
                                               $_SESSION['coat']['style']['coat_pockets_type'] = $_SESSION['coat']['style']['coat_pockets_type'];
@@ -4901,8 +4903,8 @@ if(isset($_POST['orderid']))
                                       
                                       <!-- 7. Bolsillo en el pecho -->
                                       <?php
-                                            $_SESSION['coat']['style']['coat_chest_pocket']="";
-                                            if(isset($_SESSION['coat']['style']['coat_chest_pocket']) && !empty($_SESSION['coat']['style']['coat_chest_pocket']))
+                                            //$_SESSION['coat']['style']['coat_chest_pocket']="";
+                                            if(isset($_SESSION['coat']['style']['coat_chest_pocket']) && $_SESSION['coat']['style']['coat_chest_pocket']!="")
                                             {
                                               $_SESSION['coat']['style']['coat_chest_pocket'] = $_SESSION['coat']['style']['coat_chest_pocket'];
                                             }
@@ -4984,8 +4986,8 @@ if(isset($_POST['orderid']))
                                       
                                       <!-- 8. Cinturón -->
                                       <?php
-                                        $_SESSION['coat']['style']['coat_belt']="";
-                                        if(isset($_SESSION['coat']['style']['coat_belt']) && !empty($_SESSION['coat']['style']['coat_belt']))
+                                        //$_SESSION['coat']['style']['coat_belt']="";
+                                        if(isset($_SESSION['coat']['style']['coat_belt']) && $_SESSION['coat']['style']['coat_belt']!="")
                                         {
                                           $_SESSION['coat']['style']['coat_belt'] = $_SESSION['coat']['style']['coat_belt'];
                                         }
@@ -5032,8 +5034,8 @@ if(isset($_POST['orderid']))
                                       
                                       <!-- 9. Corte trasero -->
                                       <?php
-                                        $_SESSION['coat']['style']['coat_backcut']="";
-                                        if(isset($_SESSION['coat']['style']['coat_backcut']) && !empty($_SESSION['coat']['style']['coat_backcut']))
+                                        //$_SESSION['coat']['style']['coat_backcut']="";
+                                        if(isset($_SESSION['coat']['style']['coat_backcut']) && $_SESSION['coat']['style']['coat_backcut']!="")
                                         {
                                           $_SESSION['coat']['style']['coat_backcut'] = $_SESSION['coat']['style']['coat_backcut'];
                                         }
@@ -5082,8 +5084,8 @@ if(isset($_POST['orderid']))
                                       
                                       <!-- 10. Cierre mangas -->
                                       <?php
-                                        $_SESSION['coat']['style']['coat_sleeve']="";
-                                        if(isset($_SESSION['coat']['style']['coat_sleeve']) && !empty($_SESSION['coat']['style']['coat_sleeve']))
+                                        //$_SESSION['coat']['style']['coat_sleeve']="";
+                                        if(isset($_SESSION['coat']['style']['coat_sleeve']) && $_SESSION['coat']['style']['coat_sleeve']!="")
                                         {
                                           $_SESSION['coat']['style']['coat_sleeve'] = $_SESSION['coat']['style']['coat_sleeve'];
                                         }
