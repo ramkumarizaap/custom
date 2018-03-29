@@ -268,7 +268,7 @@ else
   $df_row = mysqli_fetch_array($default_style);
   $d_style = json_decode($df_row['p_default_style']);
 }
-print_r($_SESSION['suit']);
+
 ?>
   <div class="wrapper">
     <section id="Content" role="main">
@@ -1354,7 +1354,7 @@ print_r($_SESSION['suit']);
                                         <div class="box_opt">
                                           <div id="box_back_pocket" class="radio_opt">
                                             <?php
-                                            print_r($_SESSION['suit']['style']['pants_back_pocket']);
+                                            
                                               if(isset($_SESSION['suit']['style']['pants_back_pocket']) && $_SESSION['suit']['style']['pants_back_pocket']!="")
                                               {
                                                 $_SESSION['suit']['style']['pants_back_pocket'] = $_SESSION['suit']['style']['pants_back_pocket'];
