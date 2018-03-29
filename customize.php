@@ -1354,7 +1354,6 @@ else
                                         <div class="box_opt">
                                           <div id="box_back_pocket" class="radio_opt">
                                             <?php
-                                            
                                               if(isset($_SESSION['suit']['style']['pants_back_pocket']) && $_SESSION['suit']['style']['pants_back_pocket']!="")
                                               {
                                                 $_SESSION['suit']['style']['pants_back_pocket'] = $_SESSION['suit']['style']['pants_back_pocket'];
