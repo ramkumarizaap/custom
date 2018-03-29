@@ -83,7 +83,12 @@ if($subcatid == "1")
 	$sql11=mysqli_query($con,"select ps_id,ps_label from property_style_master where subcatid like '%4%'");
 	while($r11=mysqli_fetch_array($sql11))
 	{
+		
+		if($r11['ps_label']=="Fit")
+		$p_label1="pants_fit";
+		else
 		$p_label1=str_replace(' ','_',strtolower($r11['ps_label']));
+	
 		?>
 		<div class="form-group <?php echo $p_label1;?>">
 			<input type="hidden" value="<?php echo $p_label1;?>" name="ps_id[]">

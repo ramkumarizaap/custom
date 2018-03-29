@@ -65,13 +65,16 @@ unset($_SESSION['shirt']['accents']);
 unset($_SESSION['coat']['style']);
 unset($_SESSION['coat']['fabric']);
 unset($_SESSION['coat']['accents']);
+unset($_SESSION['suit']['style']);
+unset($_SESSION['suit']['fabric']);
+unset($_SESSION['suit']['accents']);
 
 
 if(isset($_POST['orderid']))
 {
+  
     unset($_SESSION['fab_dtl']);
 
-    
     $oid=mysqli_real_escape_string($con,$_POST['orderid']);
     $action="update";
     $_SESSION['p_dtl1'] = array('orderid' => $oid,'action'=>$action);
@@ -80,7 +83,6 @@ if(isset($_POST['orderid']))
     $style=explode("{",$r['om_style']);
     $style=explode(",",$style[1]);
     $suit_type=explode(":",$style[0]);
-
 
     if(trim($suit_type[1])=='man_suit2')
     {
@@ -103,7 +105,6 @@ if(isset($_POST['orderid']))
       $pants_cuff = explode(":",$style[17]);
       $extra_pant = explode(":",trim($style[18],"}"));
 
-
       $_SESSION['suit']['style'] = array('base_price' => isset($_POST['org_price']) ? $_POST['org_price']:'0',
             'suit_type'=>trim($suit_type[1]),
             'jacket_style'=>trim($jacket_style[1]),
@@ -125,6 +126,7 @@ if(isset($_POST['orderid']))
             'pants_cuff'=>trim($pants_cuff[1]),
             'extra_pants'=>trim($extra_pant[1])
       );
+
     }
     else if(trim($suit_type[1])=='man_suit3')
     {
@@ -266,10 +268,9 @@ else
   $df_row = mysqli_fetch_array($default_style);
   $d_style = json_decode($df_row['p_default_style']);
 }
+print_r($_SESSION['suit']);
 ?>
   <div class="wrapper">
-    
-    
     <section id="Content" role="main">
       <div class="container">
         
@@ -296,7 +297,7 @@ else
                   </li>
                   <li>
                     Customize
-                   </li>
+                 </li>
                 </ul>
                 <!-- !BREADCRUMBS -->
                 </div>
@@ -461,9 +462,9 @@ else
                                         <div class="box_opt">
                                           <div class="radio_opt">
                                             <?php
-                                              $_SESSION['suit']['style']['suit_type']="";
                                               if(isset($_SESSION['suit']['style']['suit_type']) && !empty($_SESSION['suit']['style']['suit_type']))
                                               {
+
                                                 $_SESSION['suit']['style']['suit_type'] = $_SESSION['suit']['style']['suit_type'];
                                               }
                                               else
@@ -495,7 +496,7 @@ else
                                         <div class="box_opt">
                                           <div id="options_jacket_style" class="radio_opt">
                                             <?php
-                                              $_SESSION['suit']['style']['jacket_style']="";
+                                              //$_SESSION['suit']['style']['jacket_style']="";
                                               if(isset($_SESSION['suit']['style']['jacket_style']) && !empty($_SESSION['suit']['style']['jacket_style']))
                                               {
                                                 $_SESSION['suit']['style']['jacket_style'] = $_SESSION['suit']['style']['jacket_style'];
@@ -536,7 +537,7 @@ else
                                         <div class="box_opt">
                                           <div class="radio_opt">
                                             <?php
-                                              $_SESSION['suit']['style']['jacket_fit']="";
+                                              //$_SESSION['suit']['style']['jacket_fit']="";
                                               if(isset($_SESSION['suit']['style']['jacket_fit']) && !empty($_SESSION['suit']['style']['jacket_fit']))
                                               {
                                                 $_SESSION['suit']['style']['jacket_fit'] = $_SESSION['suit']['style']['jacket_fit'];
@@ -572,12 +573,15 @@ else
                                           <div class="box_opt">
                                             <div class="radio_opt">
                                               <?php
-                                              if(isset($_SESSION['suit']['style']['jacket_lapel_type']) && !empty($_SESSION['jacket']['style']['jacket_lapel_type']))
+
+                                              if(isset($_SESSION['suit']['style']['jacket_lapel_type']) && !empty($_SESSION['suit']['style']['jacket_lapel_type']))
                                               {
+
                                                 $_SESSION['suit']['style']['jacket_lapel_type'] = $_SESSION['suit']['style']['jacket_lapel_type'];
                                               }
                                               else
                                               {
+
                                                 $style_lapel_type = "";
                                                 if($d_style->jacket_lapels=='Notch')$style_lapel_type="standard";
                                                 else if($d_style->jacket_lapels=='Peak')$style_lapel_type="peak";
@@ -651,8 +655,10 @@ else
                                         <div class="box_opt">
                                           <div class="radio_opt">
                                             <?php
-                                              if(isset($_SESSION['suit']['style']['jacket_chest_pocket']) && !empty($_SESSION['suit']['style']['jacket_chest_pocket']))
+                                           
+                                              if(isset($_SESSION['suit']['style']['jacket_chest_pocket']) && $_SESSION['suit']['style']['jacket_chest_pocket']!="")
                                               {
+
                                                 $_SESSION['suit']['style']['jacket_chest_pocket'] = $_SESSION['suit']['style']['jacket_chest_pocket'];
                                               }
                                               else
@@ -685,7 +691,7 @@ else
                                         <div class="box_opt">
                                           <div class="radio_opt labels_jacket_pockets_num">
                                             <?php
-                                              if(isset($_SESSION['suit']['style']['jacket_pockets']) && !empty($_SESSION['suit']['style']['jacket_pockets']))
+                                              if(isset($_SESSION['suit']['style']['jacket_pockets']) && $_SESSION['suit']['style']['jacket_pockets']!="")
                                               {
                                                 $_SESSION['suit']['style']['jacket_pockets'] = $_SESSION['suit']['style']['jacket_pockets'];
                                               }
@@ -713,6 +719,26 @@ else
                                               3 pockets
                                             </label>
                                           </div>
+                                          <?php
+                                                      if(isset($_SESSION['suit']['style']['jacket_pockets_type']) && !empty($_SESSION['suit']['style']['jacket_pockets_type']))
+                                                      {
+
+                                                        $_SESSION['suit']['style']['jacket_pockets_type'] = $_SESSION['suit']['style']['jacket_pockets_type'];
+                                                      }
+                                                      else
+                                                      {
+                                                         
+                                                        $pocket_stylepocket_style = "";
+                                                        if($d_style->pocket_style=='Double Welt')$pocket_stylepocket_style="2a";
+                                                        else if($d_style->pocket_style=='Patched')$pocket_stylepocket_style="2b";
+                                                        else if($d_style->pocket_style=='with flaps')$pocket_stylepocket_style="2a";
+                                                        else if($d_style->pocket_style=='with flaps')$pocket_stylepocket_style="3";
+                                                         else if($d_style->pocket_style=='Double Welt')$pocket_stylepocket_style="3b";
+
+                                                        $_SESSION['suit']['style']['jacket_pockets_type'] = $pocket_stylepocket_style;
+                                                      
+                                                      }
+                                                      ?>
                                           <div class="list_common_th interactive_options all_jacket_pockets open" style="">
                                             <input id="hidden_jacket_pockets" class="option_input" type="hidden" name="jacket_pockets_type" value="<?php if(!empty($_SESSION['suit']['style']['jacket_pockets_type'])) { echo $_SESSION['suit']['style']['jacket_pockets_type']; } else { ?>2<?php } ?>">
                                             <!-- 2 Bolsillo -->
@@ -817,7 +843,6 @@ else
                                               Ventless
                                             </label>
                                             <label class="option">
-                                              
                                               <input layer="jacket_vent" class="uniform radio_opt " type="radio" name="jacket_vent" value="1" <?php if(!empty($_SESSION['suit']['style']['jacket_vent']) && $_SESSION['suit']['style']['jacket_vent']=='1') { ?> checked <?php } else if($_SESSION['suit']['style']['jacket_vent']==''){ ?> checked <?php } ?>>
                                               Center vent
                                             </label>
@@ -838,21 +863,23 @@ else
                                         </div>
                                         <div class="box_opt">
                                           <div class="radio_opt">
-                                            <?php
-                                              if(isset($_SESSION['suit']['style']['jacket_sleeve_buttons']) && !empty($_SESSION['suit']['style']['jacket_sleeve_buttons']))
-                                              {
-                                                $_SESSION['suit']['style']['jacket_sleeve_buttons'] = $_SESSION['suit']['style']['jacket_sleeve_buttons'];
-                                              }
-                                              else
-                                              {
-                                                $style_sleeve = "";
-                                                if($d_style->sleeve_buttons=='No Buttons')$style_sleeve="0";
-                                                else if($d_style->sleeve_buttons=='2')$style_sleeve="2";
-                                                else if($d_style->sleeve_buttons=='3')$style_sleeve="3";
-                                                else if($d_style->sleeve_buttons=='4')$style_sleeve="4";
-                                                $_SESSION['suit']['style']['jacket_sleeve_buttons'] = $style_sleeve;
-                                              }
-                                              ?>
+                                              <?php
+                                                if(isset($_SESSION['suit']['style']['jacket_sleeve_buttons']) && !empty($_SESSION['suit']['style']['jacket_sleeve_buttons']))
+                                                {
+                                                   $_SESSION['suit']['style']['jacket_sleeve_buttons'] = $_SESSION['suit']['style']['jacket_sleeve_buttons'];
+                                                }
+                                                else
+                                                {
+
+                                                  $style_sleeve = "";
+                                                  if($d_style->sleeve_buttons=='No Buttons')$style_sleeve="0";
+                                                  else if($d_style->sleeve_buttons=='2')$style_sleeve="2";
+                                                  else if($d_style->sleeve_buttons=='3')$style_sleeve="3";
+                                                  else if($d_style->sleeve_buttons=='4')$style_sleeve="4";
+                                                  $_SESSION['suit']['style']['jacket_sleeve_buttons'] = $style_sleeve;
+                                                }
+                                                ?>
+
                                             <label class="option">                                            
                                               <select layer="jacket_buttons" class="option uniform" name="jacket_sleeve_buttons" id="jacket_sleeve_buttons" rel="3">
                                                 <option layer="jacket_sleeve_buttons" value="0" <?php if($_SESSION['suit']['style']['jacket_sleeve_buttons']=='0') { ?> selected <?php } ?>>
@@ -1160,8 +1187,8 @@ else
                                               else
                                               {
                                                 $style_pfit = "";
-                                                if($d_style->pant_fit=='Regular Fit')$style_pfit="normal";
-                                                else if($d_style->pant_fit=='Slim Fit')$style_pfit="fit";
+                                                if($d_style->pants_fit=='Regular Fit')$style_pfit="normal";
+                                                else if($d_style->pants_fit=='Slim Fit')$style_pfit="fit";
                                                 $_SESSION['suit']['style']['pants_fit'] = $style_pfit;
                                               }
                                               ?>
@@ -1228,7 +1255,8 @@ else
                                           </p>
                                         </div>
                                         <?php
-                                          if(isset($_SESSION['suit']['style']['pants_belt']) && !empty($_SESSION['suit']['style']['pants_belt']))
+                                          
+                                          if(isset($_SESSION['suit']['style']['pants_belt']) && $_SESSION['suit']['style']['pants_belt']!="")
                                           {
                                             $_SESSION['suit']['style']['pants_belt'] = $_SESSION['suit']['style']['pants_belt'];
                                           }
@@ -1326,7 +1354,8 @@ else
                                         <div class="box_opt">
                                           <div id="box_back_pocket" class="radio_opt">
                                             <?php
-                                              if(isset($_SESSION['suit']['style']['pants_back_pocket']) && !empty($_SESSION['suit']['style']['pants_back_pocket']))
+                                            print_r($_SESSION['suit']['style']['pants_back_pocket']);
+                                              if(isset($_SESSION['suit']['style']['pants_back_pocket']) && $_SESSION['suit']['style']['pants_back_pocket']!="")
                                               {
                                                 $_SESSION['suit']['style']['pants_back_pocket'] = $_SESSION['suit']['style']['pants_back_pocket'];
                                               }
@@ -1601,6 +1630,7 @@ else
 
 if($id=='4') {
 
+
 unset($_SESSION['suit']['style']);
 unset($_SESSION['suit']['fabric']);
 unset($_SESSION['suit']['accents']);
@@ -1613,6 +1643,9 @@ unset($_SESSION['shirt']['accents']);
 unset($_SESSION['coat']['style']);
 unset($_SESSION['coat']['fabric']);
 unset($_SESSION['coat']['accents']);
+unset($_SESSION['pant']['style']);
+unset($_SESSION['pant']['fabric']);
+unset($_SESSION['pant']['accents']);
 
 if(isset($_POST['orderid']))
 {
@@ -1677,6 +1710,7 @@ if(isset($_POST['orderid']))
     $default_style = mysqli_query($con,"select * from product_master where p_id='".$_SESSION['p_dtl']['p_id']."'");
     $df_row = mysqli_fetch_array($default_style);
     $d_style = json_decode($df_row['p_default_style']);
+    
   }
 ?>
   <div class="wrapper">
@@ -1870,10 +1904,12 @@ if(isset($_POST['orderid']))
                                             <?php
                                               if(isset($_SESSION['pant']['style']['pants_fit']) && !empty($_SESSION['pant']['style']['pants_fit']))
                                               {
+
                                                 $_SESSION['pant']['style']['pants_fit'] = $_SESSION['pant']['style']['pants_fit'];
                                               }
                                               else
                                               {
+
                                                 $style_pfit = "";
                                                 if($d_style->pant_fit=='Regular Fit')$style_pfit="normal";
                                                 else if($d_style->pant_fit=='Slim Fit')$style_pfit="fit";
@@ -2047,10 +2083,12 @@ if(isset($_POST['orderid']))
                                               }
                                               else
                                               {
+
                                                 $style_bfront = "";
                                                 if($d_style->back_pockets=='No Pockets')$style_bfront="0";
                                                 else if($d_style->back_pockets=='1 Back Pocket')$style_bfront="1";
                                                 else if($d_style->back_pockets=='2 Back Pockets')$style_bfront="2";
+
                                                 $_SESSION['pant']['style']['pants_back_pocket'] = $style_bfront;
                                               }
                                               ?>
@@ -2070,10 +2108,26 @@ if(isset($_POST['orderid']))
                                               2 back pockets
                                             </label>
                                           </div>
+                                           <?php
+                                              if(isset($_SESSION['pant']['style']['pants_back_pocket_type']) && !empty($_SESSION['pant']['style']['pants_back_pocket_type']))
+                                              {
+                                                $_SESSION['pant']['style']['pants_back_pocket_type'] = $_SESSION['pant']['style']['pants_back_pocket_type'];
+                                              }
+                                              else
+                                              {
+                                                $style_bfront = "";
+                                                if($d_style->back_pocket_style=='piped pocket with button')$style_bfront="A";
+                                                else if($d_style->back_pocket_style=='Patched')$style_bfront="B";
+                                                else if($d_style->back_pocket_style=='Flap pockets')$style_bfront="C";
+                                                $_SESSION['pant']['style']['pants_back_pocket_type'] = $style_bfront;
+                                              }
+                                              ?>
                                           <div id="box_back_pocket_img" class="list_common_th interactive_options all_pants_back_pocket open">
                                             <input id="hidden_chest_pocket" class="option_input" type="hidden" name="pants_back_pocket_type" value="<?php if($_SESSION['pant']['style']['pants_back_pocket_type']!='') { echo $_SESSION['pant']['style']['pants_back_pocket_type']; } else { ?>A<?php } ?>">
                                             <!-- 1 Bolsillo -->
+
                                             <div class="box_pocket">
+                                             
                                               <div layer="pants_back_pocket" class="option_trigger common_th mini_pocket <?php if(!empty($_SESSION['pant']['style']['pants_back_pocket_type']) && $_SESSION['pant']['style']['pants_back_pocket_type']=='A') { ?> active <?php } else if($_SESSION['pant']['style']['pants_back_pocket_type']=='') { ?> active <?php } ?>" href="javascript:;" rel="A">
                                                 <div class="box_model">
                                                   <div class="active">
@@ -3176,6 +3230,7 @@ if(isset($_POST['orderid']))
     $default_style = mysqli_query($con,"select * from product_master where p_id='".$_SESSION['p_dtl']['p_id']."'");
     $df_row = mysqli_fetch_array($default_style);
     $d_style = json_decode($df_row['p_default_style']);
+   
   }
 ?>
   <div class="wrapper">
@@ -3396,19 +3451,25 @@ if(isset($_POST['orderid']))
                                     <?php
                                       if(isset($_SESSION['shirt']['style']['shirt_neck']) && !empty($_SESSION['shirt']['style']['shirt_neck']))
                                       {
+
+
                                         $_SESSION['shirt']['style']['shirt_neck'] = $_SESSION['shirt']['style']['shirt_neck'];
                                       }
                                       else
                                       {
+
                                         $style_sneck = "";
+                                        
                                         if($d_style->collar_style=='Kent Collar')$style_sneck="1";
                                         else if($d_style->collar_style=='Cutaway Collar')$style_sneck="2";
                                         else if($d_style->collar_style=='Long Collar')$style_sneck="3";
                                         else if($d_style->collar_style=='Button Down')$style_sneck="4";
                                         else if($d_style->collar_style=='Rounded Collar')$style_sneck="5";
-                                        else if($d_style->collar_style=='Stand Up Collar')$style_sneck="6";
-                                        else if($d_style->collar_style=='Wing Collar')$style_sneck="7";
+                                        else if($d_style->collar_style=='Stand-up collar')$style_sneck="6";
+                                        else if($d_style->collar_style=='Wing collar')$style_sneck="7";
                                         $_SESSION['shirt']['style']['shirt_neck'] = $style_sneck;
+
+                                        
                                       }
                                       ?>
                                     <div class="box_opt">
@@ -3466,33 +3527,7 @@ if(isset($_POST['orderid']))
                                             </p>
                                           </div>
                                         </div>
-                                        <div  class="always_hard option_trigger common_th <?php if(!empty($_SESSION['shirt']['style']['shirt_neck']) && $_SESSION['shirt']['style']['shirt_neck']=='5') { ?> active <?php } ?>" href="javascript:;" rel="5">
-                                          <div class="box_model">
-                                            <div class="active">
-                                            </div>
-                                            <img alt="Collar Style Stand-up collar" src="<?php echo $homeurl;?>assets/images/shirt_img/accents/mao.jpg" pagespeed_url_hash="1416530143" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
-                                            <br>
-                                          </div>
-                                          <div class="box_title_common">
-                                            <p>
-                                              Stand-up collar
-                                            </p>
-                                          </div>
-                                        </div>
-                                        <div  id="opt_smoking" class="always_hard option_trigger common_th <?php if(!empty($_SESSION['shirt']['style']['shirt_neck']) && $_SESSION['shirt']['style']['shirt_neck']=='6') { ?> active <?php } ?>" href="javascript:;" rel="6">
-                                          <div class="box_model">
-                                            <div class="active">
-                                            </div>
-                                            <img alt="Collar Style Wing collar" src="<?php echo $homeurl;?>assets/images/shirt_img/accents/esmoquin.jpg" pagespeed_url_hash="3583524059" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
-                                            <br>
-                                          </div>
-                                          <div class="box_title_common">
-                                            <p>
-                                              Wing collar
-                                            </p>
-                                          </div>
-                                        </div>
-                                        <div class="option_trigger common_th <?php if(!empty($_SESSION['shirt']['style']['shirt_neck']) && $_SESSION['shirt']['style']['shirt_neck']=='7') { ?> active <?php } ?>" href="javascript:;" rel="7">
+                                           <div class="option_trigger common_th <?php if(!empty($_SESSION['shirt']['style']['shirt_neck']) && $_SESSION['shirt']['style']['shirt_neck']=='5') { ?> active <?php } ?>" href="javascript:;" rel="5">
                                           <div class="box_model">
                                             <div class="active">
                                             </div>
@@ -3505,6 +3540,33 @@ if(isset($_POST['orderid']))
                                             </p>
                                           </div>
                                         </div>
+                                        <div  class="always_hard option_trigger common_th <?php if(!empty($_SESSION['shirt']['style']['shirt_neck']) && $_SESSION['shirt']['style']['shirt_neck']=='6') { ?> active <?php } ?>" href="javascript:;" rel="6">
+                                          <div class="box_model">
+                                            <div class="active">
+                                            </div>
+                                            <img alt="Collar Style Stand-up collar" src="<?php echo $homeurl;?>assets/images/shirt_img/accents/mao.jpg" pagespeed_url_hash="1416530143" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                                            <br>
+                                          </div>
+                                          <div class="box_title_common">
+                                            <p>
+                                              Stand-up collar
+                                            </p>
+                                          </div>
+                                        </div>
+                                        <div  id="opt_smoking" class="always_hard option_trigger common_th <?php if(!empty($_SESSION['shirt']['style']['shirt_neck']) && $_SESSION['shirt']['style']['shirt_neck']=='7') { ?> active <?php } ?>" href="javascript:;" rel="7">
+                                          <div class="box_model">
+                                            <div class="active">
+                                            </div>
+                                            <img alt="Collar Style Wing collar" src="<?php echo $homeurl;?>assets/images/shirt_img/accents/esmoquin.jpg" pagespeed_url_hash="3583524059" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                                            <br>
+                                          </div>
+                                          <div class="box_title_common">
+                                            <p>
+                                              Wing collar
+                                            </p>
+                                          </div>
+                                        </div>
+                                     
                                       </div>
                                     </div>
                                   </div>
@@ -3516,7 +3578,20 @@ if(isset($_POST['orderid']))
                                         Collar Lining:
                                       </p>
                                     </div>
+                                    <?php
+                                      if(isset($_SESSION['shirt']['style']['shirt_neck_no_interfacing']) && !empty($_SESSION['shirt']['style']['shirt_neck_no_interfacing']))
+                                      {
 
+                                        $_SESSION['shirt']['style']['shirt_neck_no_interfacing'] = $_SESSION['shirt']['style']['shirt_neck_no_interfacing'];
+                                      }
+                                      else
+                                      {
+                                        $style_col_lining = "";
+                                        if($d_style->collar_lining=='No Soft')$style_col_lining="0";
+                                        else if($d_style->collar_lining=='Soft')$style_col_lining="1";
+                                        $_SESSION['shirt']['style']['shirt_neck_no_interfacing'] = $style_col_lining;
+                                      }
+                                      ?>
                                       <div class="box_opt"> 
                                         <div class="radio_opt hard_soft_neck">
                                           <label class="option <?php if(!empty($_SESSION['shirt']['style']['shirt_neck_no_interfacing']) && $_SESSION['shirt']['style']['shirt_neck_no_interfacing']=='1') { ?> checked <?php } else if($_SESSION['shirt']['style']['shirt_neck_no_interfacing']=='') { ?> checked <?php } ?>">
@@ -3524,7 +3599,7 @@ if(isset($_POST['orderid']))
                                             <a title="" class="ico tooltip tooltip_option" href="javascript:;"></a>
                                             </label>
                                           </div>
-                                        </div>
+                                        </div> 
                                       </div>
                                       
                                       <div id="global_neck_buttons" class="conf_opt config_3d">
@@ -4196,16 +4271,13 @@ if(isset($_POST['orderid']))
               'colored_thread_type' => trim($colored_thread_type[1]),
               'colored_holes_type' => trim($colored_holes_type[1])
        );
-
-
-
     }
     else
     {
       $default_style = mysqli_query($con,"select * from product_master where p_id='".$_SESSION['p_dtl']['p_id']."'");
       $df_row = mysqli_fetch_array($default_style);
       $d_style = json_decode($df_row['p_default_style']);
-      print_r($d_style);
+     
     }
   ?>
   <div class="wrapper">
@@ -4620,7 +4692,23 @@ if(isset($_POST['orderid']))
                                               </tr>
                                             </tbody></table>
                                           </div>
-                                          <!-- ONLY IF: coat_closure = zipper/boton -->
+
+                                        <!-- ONLY IF: coat_closure = zipper/boton -->
+                                        <?php
+                                        $_SESSION['coat']['style']['coat_closure_type_zipper']="";
+                                        if(isset($_SESSION['coat']['style']['coat_closure_type_zipper']) && !empty($_SESSION['coat']['style']['coat_closure_type_zipper']))
+                                        {
+                                          $_SESSION['coat']['style']['coat_closure_type_zipper'] = $_SESSION['coat']['style']['coat_closure_type_zipper'];
+                                        }
+                                        else
+                                        {
+                                          $style_fastening_style = "";
+                                          if($d_style->fastening_style=='Hidden')$style_fastening_style="hide";
+                                          else if($d_style->fastening_style =='Standard')$style_fastening_style="standard";
+                                          $_SESSION['coat']['style']['coat_closure_type_zipper'] = $style_fastening_style;
+
+                                        }
+                                         ?>
                                           <div id="opt_closure_type_zipper" class="radio_opt" style="display: none;">
                                             <table>
                                               <tbody><tr>
@@ -4636,6 +4724,12 @@ if(isset($_POST['orderid']))
                                                 </td>
                                                 <td width="135">
                                                   <label id="lbl_coat_closure_type_standard" class="option">
+                                                    <div class="radio" id="uniform-closure_type_hide_zipper">
+                                                      <span>
+                                                        <input layer="coat_closure_type" class="uniform radio_opt coat_closure_type" id="closure_type_hide_zipper" type="radio" name="coat_closure_type_zipper" value="hide" <?php if($_SESSION['coat']['style']['coat_closure_type_zipper']!='' && $_SESSION['coat']['style']['coat_closure_type_zipper']=='standard') { ?> checked <?php } ?>>
+                                                      </span>
+                                                    </div>
+
                                                     <div class="radio" id="uniform-closure_type_standard_zipper">
                                                       <span class="checked">
                                                         <input layer="coat_closure_type" class="uniform radio_opt coat_closure_type" id="closure_type_standard_zipper" type="radio" name="coat_closure_type_zipper" value="standard" <?php if($_SESSION['coat']['style']['coat_closure_type_zipper']!='' && $_SESSION['coat']['style']['coat_closure_type_zipper']=='standard') { ?> checked <?php } else if($_SESSION['coat']['style']['coat_closure_type_zipper']=='') { ?> checked <?php } ?>>
@@ -4647,6 +4741,8 @@ if(isset($_POST['orderid']))
                                               </tr>
                                             </tbody></table>
                                           </div>
+
+
                                           <div id="opt_closure_type_boton" class="radio_opt" style="">
                                             <table>
                                               <tbody><tr>
@@ -4731,12 +4827,13 @@ if(isset($_POST['orderid']))
                                             }
                                             else
                                             {
+                                               
                                               $style_coat_pockets_type = "";
                                               if($d_style->pocket_style=='Flap Pocket')$style_coat_pockets_type="1";
                                               else if($d_style->pocket_style=='Double-welted')$style_coat_pockets_type="2";
                                               else if($d_style->pocket_style=='Patched')$style_coat_pockets_type="3";
                                               else if($d_style->pocket_style=='Diagonal')$style_coat_pockets_type="4";
-                                              else if($d_style->pocket_style=='Diag. zipper')$style_coat_pockets_type="5";
+                                              else if($d_style->pocket_style=='Diagonal zipper')$style_coat_pockets_type="5";
                                               $_SESSION['coat']['style']['coat_pockets_type'] = $style_coat_pockets_type;
                                             }
                                           ?>
@@ -4783,14 +4880,14 @@ if(isset($_POST['orderid']))
                                             </div>
                                             <!-- 3 Bolsillos -->
                                             <div id="pocket3" style="display: none;">
-                                              <div id="pocket3_op1" layer="coat_pockets_type" class="option_trigger common_th mini_pocket <?php if($_SESSION['coat']['style']['coat_pockets_type']!='' && $_SESSION['coat']['style']['coat_pockets_type']=='6') { ?> active <?php } ?>" href="javascript:;" rel="6">
+                                              <div id="pocket3_op1" layer="coat_pockets_type" class="option_trigger common_th mini_pocket <?php if($_SESSION['coat']['style']['coat_pockets_type']!='' && $_SESSION['coat']['style']['coat_pockets_type']=='1') { ?> active <?php } ?>" href="javascript:;" rel="1">
                                                 <div class="box_model">
                                                   <div class="active"></div>
                                                   <img alt="Pockets: Flap Pocket" src="<?php echo $homeurl;?>assets/images/coat_img/coat_pockets_6.png">
                                                 </div>
                                                 <div class="box_title_common"><p>Flap Pocket</p></div>
                                               </div>
-                                              <div layer="coat_pockets_type" class="option_trigger common_th mini_pocket <?php if($_SESSION['coat']['style']['coat_pockets_type']!='' && $_SESSION['coat']['style']['coat_pockets_type']=='7') { ?> active <?php } ?>" href="javascript:;" rel="7">
+                                              <div layer="coat_pockets_type" class="option_trigger common_th mini_pocket <?php if($_SESSION['coat']['style']['coat_pockets_type']!='' && $_SESSION['coat']['style']['coat_pockets_type']=='2') { ?> active <?php } ?>" href="javascript:;" rel="2">
                                                 <div class="box_model">
                                                   <div class="active"></div>
                                                   <img alt="Pockets: Double-welted" src="<?php echo $homeurl;?>assets/images/coat_img/coat_pockets_7.png">
@@ -4898,7 +4995,7 @@ if(isset($_POST['orderid']))
                                           if($d_style->belt=='No')$style_coat_belt="0";
                                           else if($d_style->belt=='Sewed')$style_coat_belt="sewing";
                                           else if($d_style->belt=='Loose')$style_coat_belt="loose";
-                                          echo $_SESSION['coat']['style']['coat_belt'] = $style_coat_belt;
+                                          $_SESSION['coat']['style']['coat_belt'] = $style_coat_belt;
                                         }
                                       ?>
                                       <div class="conf_opt config_3d">
