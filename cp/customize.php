@@ -61,18 +61,33 @@
 	unset($_SESSION['action']);  
 	$_SESSION['action']="save";
 	}
-	unset($_SESSION['pant']['style']);
-	unset($_SESSION['pant']['fabric']);
-	unset($_SESSION['pant']['accents']);
-	unset($_SESSION['jacket']['style']);
-	unset($_SESSION['jacket']['fabric']);
-	unset($_SESSION['jacket']['accents']);
-	unset($_SESSION['shirt']['style']);
-	unset($_SESSION['shirt']['fabric']);
-	unset($_SESSION['shirt']['accents']);
-	unset($_SESSION['suit']['style']);
-	unset($_SESSION['suit']['fabric']);
-	unset($_SESSION['suit']['accents']);
+		// unset($_SESSION['pant']['style']);
+		// unset($_SESSION['pant']['fabric']);
+		// unset($_SESSION['pant']['accents']);
+		// unset($_SESSION['jacket']['style']);
+		// unset($_SESSION['jacket']['fabric']);
+		// unset($_SESSION['jacket']['accents']);
+		// unset($_SESSION['shirt']['style']);
+		// unset($_SESSION['shirt']['fabric']);
+		// unset($_SESSION['shirt']['accents']);
+		// unset($_SESSION['suit']['style']);
+		// unset($_SESSION['suit']['fabric']);
+		// unset($_SESSION['suit']['accents']);
+		unset($_SESSION['pant']['style']);
+		unset($_SESSION['pant']['fabric']);
+		unset($_SESSION['pant']['accents']);
+		unset($_SESSION['jacket']['style']);
+		unset($_SESSION['jacket']['fabric']);
+		unset($_SESSION['jacket']['accents']);
+		unset($_SESSION['shirt']['style']);
+		unset($_SESSION['shirt']['fabric']);
+		unset($_SESSION['shirt']['accents']);
+		unset($_SESSION['coat']['style']);
+		unset($_SESSION['coat']['fabric']);
+		unset($_SESSION['coat']['accents']);
+		unset($_SESSION['suit']['style']);
+		unset($_SESSION['suit']['fabric']);
+		unset($_SESSION['suit']['accents']);
 
 	if(isset($_GET['oid']))
 	{
@@ -786,6 +801,7 @@
 	                  </div>
 	                </div>
 	                <!-- Jacket: sleeve_buttons -->
+
 	                <div id="jacket_sleeve_buttons" class="conf_opt config_3d">
 	                  <div class="box_title">
 	                    <p>
@@ -1082,8 +1098,25 @@
 	                  </div>
 	                  <div class="box_opt">
 	                    <div class="radio_opt">
+            	          <?php
+                                  if(isset($_SESSION['suit']['style']['pants_fit']) && !empty($_SESSION['suit']['style']['pants_fit']))
+                                  {
+                                    $_SESSION['suit']['style']['pants_fit'] = $_SESSION['suit']['style']['pants_fit'];
+                                  }
+                                  else
+                                  {
+                                    
+                                    //print_r($d_style->pant_fit);
+                                    $style_pfit = "";
+                                    if($d_style->pant_fit=='Regular Fit')$style_pfit="normal";
+                                    else if($d_style->pant_fit=='Slim Fit')$style_pfit="fit";
+                                    $_SESSION['suit']['style']['pants_fit'] = $style_pfit;
+
+
+                                  }
+                                  ?>
 	                      <label class="option">
-	                        
+	                       
 	                        <input layer="pants_fit" class="uniform option_input" type="radio" name="pants_fit" value="normal" <?php if(!empty($_SESSION['suit']['style']['pants_fit']) && $_SESSION['suit']['style']['pants_fit']=='normal') { ?> checked <?php } ?>>
 	                        Regular fit
 	                      </label>
@@ -1103,10 +1136,25 @@
 	                      Pleats:
 	                    </p>
 	                  </div>
+
 	                  <div class="box_opt">
 	                    <div class="radio_opt">
+	                    	<?php
+                          if(isset($_SESSION['suit']['style']['pants_peg']) && !empty($_SESSION['suit']['style']['pants_peg']))
+                          {
+                            $_SESSION['suit']['style']['pants_peg'] = $_SESSION['suit']['style']['pants_peg'];
+                          }
+                          else
+                          {
+                            
+                            $style_ppeg = "";
+                            if($d_style->pleats=='No Pleats')$style_ppeg="0";
+                            else if($d_style->pleats=='Pleated')$style_ppeg="1";
+                            else if($d_style->pleats=='Double Pleats')$style_ppeg="2";
+                            $_SESSION['suit']['style']['pants_peg'] = $style_ppeg;
+                          }
+                          ?>
 	                      <label class="option">
-	                        
 	                        <input layer="pants_peg" class="uniform option_input" type="radio" name="pants_peg" value="0" <?php if($_SESSION['suit']['style']['pants_peg']=='0') { ?> checked <?php } else if($_SESSION['suit']['style']['pants_peg']=='') { ?> checked <?php } ?>>
 	                        No Pleats
 	                      </label>
@@ -1133,6 +1181,20 @@
 	                    </p>
 	                  </div>
 	                  <div class="box_opt">
+  					<?php
+                                          
+                      if(isset($_SESSION['suit']['style']['pants_belt']) && $_SESSION['suit']['style']['pants_belt']!="")
+                      {
+                        $_SESSION['suit']['style']['pants_belt'] = $_SESSION['suit']['style']['pants_belt'];
+                      }
+                      else
+                      {
+                        $style_fast = "";
+                        if($d_style->pants_fastening=='Centered')$style_fast="0";
+                        else if($d_style->pants_fastening=='Displaced')$style_fast="1";
+                        $_SESSION['suit']['style']['pants_belt'] = $style_fast;
+                      }
+                      ?>
 	                    <div class="list_common_th interactive_options all_belts open">
 	                      <input class="option_input" type="hidden" name="pants_belt" value="<?php if($_SESSION['suit']['style']['pants_belt']!='') { echo $_SESSION['suit']['style']['pants_belt']; } else { ?>1<?php } ?>">
 	                      <!-- Cuadrado -->
@@ -1176,6 +1238,20 @@
 	                  </div>
 	                  <div class="box_opt">
 	                    <div class="radio_opt">
+	                    	<?php
+                              if(isset($_SESSION['suit']['style']['pants_front_pocket']) && !empty($_SESSION['suit']['style']['pants_front_pocket']))
+                              {
+                                $_SESSION['suit']['style']['pants_front_pocket'] = $_SESSION['suit']['style']['pants_front_pocket'];
+                              }
+                              else
+                              {
+                                $style_pfront = "";
+                                if($d_style->side_pockets=='Diagonal')$style_pfront="diagonal";
+                                else if($d_style->side_pockets=='Vertical')$style_pfront="vertical";
+                                else if($d_style->side_pockets=='Rounded')$style_pfront="rounded";
+                                $_SESSION['suit']['style']['pants_front_pocket'] = $style_pfront;
+                              }
+                              ?>
 	                      <label class="option">
 	                        
 	                        <input layer="pants_front_pocket" class="uniform option_input" type="radio" name="pants_front_pocket" value="diagonal" <?php if(!empty($_SESSION['suit']['style']['pants_front_pocket']) && $_SESSION['suit']['style']['pants_front_pocket']=='diagonal') { ?> checked <?php } else if($_SESSION['suit']['style']['pants_front_pocket']=='') { ?> checked <?php } ?>>
@@ -1204,6 +1280,20 @@
 	                  </div>
 	                  <div class="box_opt">
 	                    <div id="box_back_pocket" class="radio_opt">
+	                    	<?php
+                          if(isset($_SESSION['suit']['style']['pants_back_pocket']) && $_SESSION['suit']['style']['pants_back_pocket']!="")
+                          {
+                            $_SESSION['suit']['style']['pants_back_pocket'] = $_SESSION['suit']['style']['pants_back_pocket'];
+                          }
+                          else
+                          {
+                            $style_bfront = "";
+                            if($d_style->back_pockets=='No Pockets')$style_bfront="0";
+                            else if($d_style->back_pockets=='1 Back Pocket')$style_bfront="1";
+                            else if($d_style->back_pockets=='2 Back Pockets')$style_bfront="2";
+                            $_SESSION['suit']['style']['pants_back_pocket'] = $style_bfront;
+                          }
+                          ?>
 	                      <label class="option">
 	                        
 	                        <input layer="pants_back_pocket" class="uniform num_b" type="radio" name="pants_back_pocket" value="0" <?php if($_SESSION['suit']['style']['pants_back_pocket']=='0') { ?> checked <?php } ?>>
@@ -1224,6 +1314,22 @@
 	                      <input id="hidden_chest_pocket" class="option_input" type="hidden" name="pants_back_pocket_type" value="<?php if(!empty($_SESSION['suit']['style']['pants_back_pocket_type'])) { echo $_SESSION['suit']['style']['pants_back_pocket_type']; } else { ?>A<?php } ?>">
 	                      <!-- 1 Bolsillo -->
 	                      <div class="box_pocket">
+
+	                      <?php
+                          if(isset($_SESSION['suit']['style']['pants_back_pocket_type']) && $_SESSION['suit']['style']['pants_back_pocket_type']!="")
+                          {
+                            $_SESSION['suit']['style']['pants_back_pocket_type'] = $_SESSION['suit']['style']['pants_back_pocket_type'];
+                          }
+                          else
+                          {
+                            $style_back_pocket = "";
+                            
+                            if($d_style->back_pocket_style=='piped pocket with button')$style_back_pocket="A";
+                            else if($d_style->back_pocket_style=='Patched')$style_back_pocket="B";
+                            else if($d_style->back_pocket_style=='Flap pockets')$style_back_pocket="C";
+                            $_SESSION['suit']['style']['pants_back_pocket_type'] = $style_back_pocket;
+                          }
+                          ?>
 	                        <div layer="pants_back_pocket" class="option_trigger common_th mini_pocket <?php if(!empty($_SESSION['suit']['style']['pants_back_pocket_type']) && $_SESSION['suit']['style']['pants_back_pocket_type']=='A') { ?> active <?php } else if($_SESSION['suit']['style']['pants_back_pocket_type']=='') { ?> active <?php } ?>" href="javascript:;" rel="A">
 	                          <div class="box_model">
 	                            <div class="active">
@@ -1277,6 +1383,19 @@
 	                  </div>
 	                  <div class="box_opt">
 	                    <div class="radio_opt">
+	                    	<?php
+                              if(isset($_SESSION['suit']['style']['pants_cuff']) && !empty($_SESSION['suit']['style']['pants_cuff']))
+                              {
+                                $_SESSION['suit']['style']['pants_cuff'] = $_SESSION['suit']['style']['pants_cuff'];
+                              }
+                              else
+                              {
+                                $style_pcuff = "";
+                                if($d_style->pant_cuffs=='No Pant Cuff')$style_pcuff="0";
+                                else if($d_style->pant_cuffs=='With Pant Cuffs')$style_pcuff="1";
+                                $_SESSION['suit']['style']['pants_cuff'] = $style_pcuff;
+                              }
+                              ?>
 	                      <label class="option">
 	                        
 	                        <input layer="pants_cuff" class="uniform option_input" type="radio" name="pants_cuff" value="0" <?php if($_SESSION['suit']['style']['pants_cuff']=='0') { ?> checked <?php } else if($_SESSION['suit']['style']['pants_cuff']=='') { ?> checked <?php } ?>>
@@ -1301,6 +1420,19 @@
 	                </div>
 	                <div class="box_opt">
 	                  <div class="radio_opt">
+	                  	<?php
+                          if(isset($_SESSION['suit']['style']['extra_pants']) && !empty($_SESSION['suit']['style']['extra_pants']))
+                          {
+                            $_SESSION['suit']['style']['extra_pants'] = $_SESSION['suit']['style']['extra_pants'];
+                          }
+                          else
+                          {
+                            $style_epants = "";
+                            if($d_style->extra_pants=='No')$style_epants="No";
+                            else if($d_style->extra_pants=='Yes')$style_epants="Yes";
+                            $_SESSION['suit']['style']['extra_pants'] = $style_epants;
+                          }
+                          ?>
 	                    <label class="option">
 	                      
 	                      <input layer="extra_pants" class="uniform option_input" type="radio" name="extra_pants" value="Yes" <?php if($_SESSION['suit']['style']['extra_pants']=='Yes') { ?> checked <?php } ?>>
@@ -1855,7 +1987,7 @@
 	              <div class="box_model">
 	                <div class="active">
 	                </div>
-	                <img alt="Collar Style Stand-up collar" src="<?php echo $homeurl;?>assets/images/shirt_img/collar/mao.jpg" pagespeed_url_hash="1416530143" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+	                <img alt="Collar Style Stand-up collar" src="<?php echo $homeurl;?>assets/images/shirt_img/accents/mao.jpg" pagespeed_url_hash="1416530143" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
 	                <br>
 	              </div>
 	              <div class="box_title_common">
@@ -1868,7 +2000,7 @@
 	              <div class="box_model">
 	                <div class="active">
 	                </div>
-	                <img alt="Collar Style Wing collar" src="<?php echo $homeurl;?>assets/images/shirt_img/collar/esmoquin.jpg" pagespeed_url_hash="3583524059" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+	                <img alt="Collar Style Wing collar" src="<?php echo $homeurl;?>assets/images/shirt_img/accents/esmoquin.jpg" pagespeed_url_hash="3583524059" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
 	                <br>
 	              </div>
 	              <div class="box_title_common">
@@ -4082,7 +4214,7 @@
 	$df_row = mysqli_fetch_array($default_style);
 	$d_style = json_decode($df_row['p_default_style']);
 	}
-  
+
 	?>
 	<div class="full-width section-emphasis-1 page-header">
 	<div class="container">
@@ -4167,7 +4299,7 @@
 	              <div id="move">
 	                <div id="control_suit" style="left:124px;">
 	                  <!-- Rotate model -->
-	                  <div id="box_change_position">                                               
+	                  <div id="box_change_position">                                            
 	                    <a id="change_position" class="change_position" href="javascript:;" rel="front">
 	                      Turn around model
 	                    </a>                                                
