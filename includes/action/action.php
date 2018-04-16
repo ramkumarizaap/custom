@@ -1486,6 +1486,7 @@ else if(isset($_POST['section']) && $_POST['section']=='accents') {
         $order_id=mysqli_real_escape_string($con,trim($_POST['order_id']));
         $o_id=mysqli_real_escape_string($con,trim($_POST['order_id']));
         $om_price=$_SESSION['suit']['accents']['tot_price'];
+       	
         $date=date('Y-m-d H:i:s');
         $query=mysqli_query($con,"select tax_per,tot_per from  product_master where p_id=$p_id");
         $q1=mysqli_fetch_array($query);
