@@ -2857,9 +2857,7 @@ $(".check_mail").blur(function(){
       success:function(data)
 
         {
-
         if(data=="Fail")
-
         {
 
           $(".check_mail_div").html("<span style='color:red;'>Email-ID Already Exists!!!</span>");
@@ -2867,23 +2865,18 @@ $(".check_mail").blur(function(){
           $(".save_btn").hide();
 
         }
-
         else if(data=="Success")
-
         {
 
           $(".check_mail_div").html("<span style='color:green;'>Email-ID Available</span>");
 
           $(".save_btn").show(); 
-
         }
-
       }
 
     });
 
 });
-
 
 $(".add_cart").click(function(){
 
@@ -2898,7 +2891,6 @@ $(".add_cart").click(function(){
   p_type=$(this).attr("data-ptype").toLowerCase();
   
   
-
   $.ajax({
 
       type:"POST",url:"<?php echo $adminurl;?>ajax/cart.php",
