@@ -12,6 +12,10 @@ $userid=$_POST['userid'];
 
 $subid=$_POST['subid'];
 
+$p_type=$_POST['p_type'];
+
+$cart=$_POST['cart'];
+
 if(isset($_SESSION['emp_user_id']))
 
 $placeid=$_SESSION['emp_user_id'];
@@ -22,11 +26,19 @@ $placeid=$_SESSION['admin_user_id'];
 
 
 
-$sql1=mysqli_query($con,"select p_price from product_master where p_id='".$pid."'");
+$sql1=mysqli_query($con,"select p_price,p_default_style from product_master where p_id='".$pid."'");
+
+
 
 $r1=mysqli_fetch_array($sql1);
 
+
+$style = $r1['p_default_style'];
+
+
 $price=$r1['p_price'];
+
+
 
 $date=date('Y-m-d H:i:s');
 
@@ -95,10 +107,9 @@ else if(isset($_SESSION['emp_user_id']))
 
 }
 
-$sql=mysqli_query($con,"insert into order_master(order_id,userid,pid,subcatid,om_price,om_quantity,order_status,placed_by,created_date,last_updated)
+$sql=mysqli_query($con,"insert into order_master(order_id,userid,pid,subcatid,p_type,c_type,om_price,om_style,om_quantity,order_status,placed_by,created_date,last_updated)
 
-	values('".$o_id."','".$userid."','".$pid."','".$subid."','".$price."',1,'Processing','".$placed_by."','".$date."','".$date."')");
-
+	values('".$o_id."','".$userid."','".$pid."','".$subid."','".$p_type."','".$cart."','".$price."','".$style."',1,'Processing','".$placed_by."','".$date."','".$date."')");
 
 
 ?>

@@ -138,13 +138,13 @@ if(isset($_SESSION['admin_user_id']) || isset($_SESSION['emp_user_id']))
                 <?php 
 
                 $pro=$site->get_all_products('','backend');
-
+                 
                 foreach ($pro as $key => $value) {
 
                   $cat_name=str_replace(" ","-",strtolower($pro[$key]['sub_cat_name']));
 
                   ?>
-
+                  
                   <!--
 
                   <a href="<?php echo $adminurl;?>product/<?php echo $_GET['type'];?>/<?php echo $pro[$key]['id'];?>/">
@@ -189,6 +189,7 @@ if(isset($_SESSION['admin_user_id']) || isset($_SESSION['emp_user_id']))
 
                             </h3>
 
+                         
                             <?php if($pro[$key]['sub_category']=="1" || $pro[$key]['sub_category']=="2" 
 
                             || $pro[$key]['sub_category']=="3"|| $pro[$key]['sub_category']=="4" || $pro[$key]['sub_category']=="5"){?>
@@ -196,8 +197,8 @@ if(isset($_SESSION['admin_user_id']) || isset($_SESSION['emp_user_id']))
                             <a class=" btn btn-danger btn-mini" href="<?php echo $adminurl."customize/style/".$_GET['type']."/".$pro[$key]['id']."/".$pro[$key]['category']."/".$pro[$key]['sub_category']."/";?>"><span class="fa fa-eye"> Customize</span></a><br><br>
 
                             <?php }?>
-
-                            <a class=" btn btn-info add_cart" data-sid="<?php echo $pro[$key]['sub_category'];?>" data-pid="<?php echo $pro[$key]['id'];?>" data-user="<?php echo $_GET['type'];?>"
+                            
+                            <a class=" btn btn-info add_cart" data-sid="<?php echo $pro[$key]['sub_category'];?>" data-pid="<?php echo $pro[$key]['id'];?>" data-ptype="<?php echo $pro[$key]['sub_cat_name'];?>" data-cart="1" data-user="<?php echo $_GET['type'];?>"
 
                                href="javascript:void(0);"><span class="fa fa-plus"> Add to Cart</span></a>
 

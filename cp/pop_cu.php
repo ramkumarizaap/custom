@@ -29,11 +29,12 @@
               <div class="nav-tabs-custom">
 
                 <ul class="nav nav-tabs">
-
+                  
                   <li class="active"><a href="#style_<?php echo $a;?>" data-toggle="tab" 
 
                       aria-expanded="true">Style</a></li>
 
+                  <?php if($r['c_type']==0) { ?>
                   <li class=""><a href="#fab_<?php echo $a;?>" data-toggle="tab"
 
                        aria-expanded="false">Fabric</a></li>
@@ -41,39 +42,65 @@
                   <li class=""><a href="#ext_<?php echo $a;?>" data-toggle="tab"
 
                        aria-expanded="false">Accent</a></li>
+                  <?php } ?>
 
                 </ul>
 
                 <div class="tab-content" attr="<?php echo $r['p_type']; ?>">
 
-                  <?php       
-                   if($r['p_type']=="trousers") 
+                  <?php   
 
-                    { 
+                    if($r['p_type']=="trousers" && $r['c_type']==0){
 
-                      require('popup/pop_trousers.php');
+                     require('popup/pop_trousers.php');
 
                     }
-                    else if($r['p_type']=="blazers") 
+                    else if($r['p_type']=="trousers" && $r['c_type']==1) 
+                    { 
 
+                      require('popup/pop_add_trousers.php');
+
+                    }
+                    else if($r['p_type']=="blazers" && $r['c_type']==0) 
                     { 
 
                       require('popup/pop_blazers.php');
 
                     }
-                    else if($r['p_type']=="shirts") 
+                    else if($r['p_type']=="blazers" && $r['c_type']==1) 
+                    { 
 
+                      require('popup/pop_add_blazers.php');
+
+                    }
+                    else if($r['p_type']=="shirts" && $r['c_type']==0) 
                     { 
 
                       require('popup/pop_shirts.php');
 
                     }
-                    else if($r['p_type']=="suits") 
-
+                    else if($r['p_type']=="shirts" && $r['c_type']==1) 
                     { 
 
+                      require('popup/pop_add_shirts.php');
+
+                    }
+                    else if($r['p_type']=="suits" && $r['c_type']==0) 
+                    { 
 
                       require('popup/pop_suits.php');
+
+                    }
+                    else if($r['p_type']=="suits" && $r['c_type']==1) 
+                    { 
+
+                      require('popup/pop_add_suits.php');
+
+                    }
+                    else if($r['p_type']=="coat" && $r['c_type']==1) 
+                    { 
+
+                      require('popup/pop_add_coat.php');
 
                     }
 

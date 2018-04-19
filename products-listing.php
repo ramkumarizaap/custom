@@ -9,9 +9,11 @@ $id=str_replace('-',' ',$_GET['orderid1']);
 $subcatid1=str_replace('-',' ',$_GET['subcatid']);
 
 $get_sub_cat_id = mysqli_query($con,"select sub_cat_id from sub_category_master where sub_cat_name='".$subcatid1."'");
+;
 if(mysqli_num_rows($get_sub_cat_id) > 0)
 {
   $sub_cat_id12 = mysqli_fetch_array($get_sub_cat_id);
+
 }
 $pro_id=$site->get_product_by_name1($id,$sub_cat_id12['sub_cat_id']);
 
@@ -281,7 +283,8 @@ else
 
 <form role="form" class="shop-form form-horizontal" id="customize-form" action="<?php echo $homeurl; ?>customize/<?php echo strtolower(str_replace(' ','-',$get_sub_cat[0]['subcat_name'])); ?>/style/" method="post" novalidate>
 
-  <button type="button" data-toggle="modal" data-target="#cart-popup" class="add-cart btn btn-primary" data-pid="<?php echo $pro_id[0]['id'];?>" data-subid="<?php echo $pro_id[0]['sub_category'];?>">Add to cart</button>
+  <button type="button" data-toggle="modal" data-target="#cart-popup" class="add-cart btn btn-primary" data-pid="<?php echo $pro_id[0]['id'];?>" data-ptype="<?php echo $get_sub_cat[0]['subcat_name'];?>" data-cart="1" data-subid="<?php echo $pro_id[0]['sub_category'];?>">Add to cart</button>
+
   <?php
     if($pro_id[0]['sub_category'] == '6')
 

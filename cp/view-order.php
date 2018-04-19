@@ -178,15 +178,15 @@ if(isset($_SESSION['admin_user_id']) || isset($_SESSION['manu_user_id'])
                         <?php endif; ?>
                            <td>
                            <?php 
-                            if($su_arr['subcatid']!="5")
+                            if($su_arr['subcatid']!="6")
                             {
                               ?>
                                 <a class="btn btn-warning btn-xs popup" 
                                   data-href="measure<?php echo $r['om_id'];?>">Measurement Details</a><br><br>
                                   <?php 
                                   include("pop_measure.php");
-                                  if($r['om_style']!='')
-                                  {
+                                  // if($r['om_style']!='')
+                                  // {
                                     ?>
                                    <a class="btn btn-success btn-xs popup"  
                                     data-href="customize<?php echo $r['om_id'];?>">Customize Details</a>
@@ -195,11 +195,11 @@ if(isset($_SESSION['admin_user_id']) || isset($_SESSION['manu_user_id'])
                                   <a class="btn btn-success btn-xs popup" 
                                   href="<?php echo $adminurl;?>customize/edit/style/<?php echo $r['userid'];?>/<?php echo $r['pid'];?>/1/<?php echo $r['subcatid'];?>/<?php echo $r['om_id'];?>/<?php echo $r['order_id'];?>/">Modify Order</a><br><br> 
                                 <?php endif; ?>   
-
+                                  
                                    <?php 
                                     include("pop_cu.php");
 
-                                  }
+                                  //}
                               }
                                ?> 
                                <?php if(isset($_SESSION['admin_user_id'])): ?>

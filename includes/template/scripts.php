@@ -319,12 +319,11 @@ $(function() {
 
    		$('a').click(function(e){
 
- //           e.preventDefault();
+      //e.preventDefault();
 
         });
 
-    	
-
+    	    
     			$.ajax({
 
     				type:"POST",url:"<?php echo $homeurl;?>includes/action/ajax.php",
@@ -359,32 +358,24 @@ $(function() {
 
     			});
 
-    			
-
-    		
-
-
 
     	$(".add-cart").click(function(){
-
-
-
-            //pid="<?php echo isset($pro_id[0]['id']);?>";
 
             id=$(this).attr("data-pid");
 
             subid=$(this).attr("data-subid");
 
-          //alert(id);
+            cart=$(this).attr("data-cart");
+
+            p_type=$(this).attr("data-ptype").toLowerCase();
 
     		$.ajax({
 
     				type:"POST",url:"<?php echo $homeurl;?>includes/action/ajax.php",
 
-        				data:{type:"cart_insert",pid:id,subid:subid},
+        				data:{type:"cart_insert",pid:id,subid:subid,p_type:p_type,cart:cart},
 
     				success:function(data)
-
     				{
 
                          //alert(data);

@@ -240,11 +240,17 @@ elseif ($type=="cart_insert")
 
 	$subid=$_POST['subid'];
 
-	$sql1=mysqli_query($con,"select p_price from product_master where p_id='".$pid."'");
+	$p_type=$_POST['p_type'];
+
+    $cart=$_POST['cart'];
+
+	$sql1=mysqli_query($con,"select p_price,p_default_style from product_master where p_id='".$pid."'");
 
 	$r1=mysqli_fetch_array($sql1);
 
 	$price=$r1['p_price'];
+
+	$style = $r1['p_default_style'];
 
 	$date=date('Y-m-d H:i:s');
 
@@ -301,8 +307,7 @@ elseif ($type=="cart_insert")
 	  }
 	}
 	
-	$sql=mysqli_query($con,"insert into order_master(order_id,userid,sess_id,pid,subcatid,om_price,om_quantity,order_status,created_date,last_updated)values('".$o_id."','".$userid."','".$gid."','".$pid."','".$subid."','".$price."',1,'Processing','".$date."','".$date."')");
-
+	$sql=mysqli_query($con,"insert into order_master(order_id,userid,sess_id,pid,subcatid,p_type,c_type,om_price,om_style,om_quantity,order_status,created_date,last_updated)values('".$o_id."','".$userid."','".$gid."','".$pid."','".$subid."','".$p_type."','".$cart."','".$price."','".$style."',1,'Processing','".$date."','".$date."')");
 }
 
 elseif ($type=="del_cart")

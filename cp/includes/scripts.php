@@ -241,16 +241,10 @@ $(".fabric-class").change(function(){
 
   });
 
-  
-
 });
 
 
-
 $(".category12").on("change",function(){
-
-
-
 
 
     var id=$(this).val(),
@@ -268,7 +262,6 @@ $(".category12").on("change",function(){
     else
 
       id=id1;
-
 
 
     $.ajax({
@@ -294,65 +287,22 @@ $(".category12").on("change",function(){
 });
 
 
-
 <?php if($page!="customize") { ?>
-
-
-
 
 
   $('.modal-popup-type2').setupModal({id: 'popMod2', modal: false, transition:'slideDown'});
 
-
-
-
-
     $(function() {
 
-
-
-
-
-
-
       $('.tags_1').tagsInput({width:'auto'});
-
-
-
-
-
 
 
        $(".select2").select2();
 
 
-
-
-
-
-
       });
 
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
     </script>
-
-
-
-
-
 
 
     <script>tinymce.init({
@@ -400,33 +350,9 @@ $(".category12").on("change",function(){
       });</script>
 
 
-
-
-
-
-
      <script>
 
-
-
-
-
-
-
-     
-
-
-
-
-
-
-
       $(function () {
-
-
-
-
-
 
 
         $("#example1,.example1").DataTable({
@@ -436,17 +362,6 @@ $(".category12").on("change",function(){
               "autoWidth": true
 
 });
-
-
-
-
-
-
-
-        
-
-
-
 
 
 
@@ -1287,7 +1202,7 @@ $("form").submit(function(){
 
               {
 
-//console.log(data);
+               //console.log("Success: "+data);
 
                 if(class1=="create-order")
 
@@ -2970,33 +2885,38 @@ $(".check_mail").blur(function(){
 });
 
 
-
-
-
-
-
 $(".add_cart").click(function(){
 
   pid=$(this).attr("data-pid");
 
   user=$(this).attr("data-user");
-
+  
   subid=$(this).attr("data-sid");
+
+  cart=$(this).attr("data-cart");
+
+  p_type=$(this).attr("data-ptype").toLowerCase();
+  
+  
 
   $.ajax({
 
       type:"POST",url:"<?php echo $adminurl;?>ajax/cart.php",
 
-      data:{pid:pid,userid:user,subid:subid},
+      data:{pid:pid,userid:user,subid:subid,p_type:p_type,cart:cart},
 
       success:function(data)
 
       {
-
+        console.log(data);
         $(".cart_succ").toggleClass("hide");
 
          setTimeout(function(){location.reload();},2000);
 
+      },
+      error:function(err)
+      {
+        console.log(err);
       }
 
   });
